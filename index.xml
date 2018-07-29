@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Kiera</title>
-    <link>https://www.example.org/</link>
+    <link>https://glaspie.us/</link>
     <description>Recent content on Kiera</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright &amp;copy; 2017 - Author Name</copyright>
     <lastBuildDate>Sat, 28 Jul 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://www.example.org/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://glaspie.us/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Beware the Azure VM throttle</title>
-      <link>https://www.example.org/posts/beware-the-azure-vm-throttle/</link>
+      <link>https://glaspie.us/posts/beware-the-azure-vm-throttle/</link>
       <pubDate>Sat, 28 Jul 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.example.org/posts/beware-the-azure-vm-throttle/</guid>
+      <guid>https://glaspie.us/posts/beware-the-azure-vm-throttle/</guid>
       <description>One of my customers went live with their datawarehouse solution in Azure a few weeks back. Everything went smoothly until the analysts hit the boxes with more than they could handle and we had to rearchitect a new solution on the fly.</description>
     </item>
     
     <item>
       <title>My First Post</title>
-      <link>https://www.example.org/posts/my-new-post/</link>
+      <link>https://glaspie.us/posts/my-new-post/</link>
       <pubDate>Sat, 28 Jul 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.example.org/posts/my-new-post/</guid>
+      <guid>https://glaspie.us/posts/my-new-post/</guid>
       <description>Hello world this is my first post! I&amp;rsquo;ve written a couple of blogs for work and wanted to try out Hugo.</description>
     </item>
     

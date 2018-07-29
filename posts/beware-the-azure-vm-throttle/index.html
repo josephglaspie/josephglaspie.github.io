@@ -1,0 +1,129 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title>Kiera</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="" />
+  <meta name="generator" content="Hugo 0.45.1" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="https://www.example.org/css/styles.css" />
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://www.example.org/">Kiera</a>
+            </h1>
+
+      <ul id="social-media">
+             
+      </ul>
+      
+      <p><em>A Hugo theme for creative and technical writing</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Beware the Azure VM throttle</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2018-07-28T00:00:00Z">Jul 28, 2018</time>
+        </li>
+        
+        
+
+        
+
+        <li>2 min read</li>
+    </ul>
+</aside>
+    
+
+    
+
+<p>One of my customers went live with their datawarehouse solution in Azure a few weeks back. Everything went smoothly until the analysts hit the boxes with more than they could handle and we had to rearchitect a new solution on the fly.</p>
+
+<p>I wanted to explain what we saw from at a high-level and in common language without making my fellow engineers cringe too much.</p>
+
+<p>When building a Virtual Machine (VM) in the cloud there are many specs to look at. We typically focus on things like HDD size and speed, amount of RAM and CPU counts and cores.</p>
+
+<p>However, to keep all the VMs in the cloud from stomping all over each other Azure throttles the VMs much like an HOA throttles your neighbor from building a body shop on their front yard.</p>
+
+<p>The machines we are using are spec’d for High Memory usage but have a cached Disk IO of 512MB/s total.</p>
+
+<p><img src="https://www.example.org/Picture1.png" alt="image alt text" /></p>
+
+<p>…This means that it only takes two 2TB disks at full utilization (250MB/s) to hit the Azure VM throttle of 512MB as highlighted above.</p>
+
+<p><img src="https://www.example.org/disklimits.png" alt="image alt text" /></p>
+
+<p>Our VM has multiple &gt; 2TB disks attached with SQL running full speed. The CPU and RAM on the server are underutilized but the transaction times on the disks are at &gt; 1000ms instead of 15-20 in a healthy non-throttled machine. We have validated this with PerfMon the local windows performance counter tool.</p>
+
+<p>Currently, the L series VMs that have no storage throttles are available in East Us 2 where our subscription (PROD-INTERLINE-START) lives.</p>
+
+<h2 id="tldr">TLDR</h2>
+
+<p>We have a pontoon boat (optimized for memory) and even though we keep attaching motors and props the shape of the hull (VM) will only allow it to go about 15 MPHs. If you want it to go faster need to get a boat with a streamlined hull.</p>
+
+<h2 id="references">References:</h2>
+
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes-memory#esv3-series">Azure VMs</a></li>
+<li><a href="https://docs.microsoft.com/en-us/azure/virtual-machines/windows/premium-storage#scalability-and-performance-targets">Azure Disks</a></li>
+<li><a href="https://blogs.technet.microsoft.com/xiangwu/2017/05/14/azure-vm-storage-performance-and-throttling-demystify/">On Azure VM Throttling</a></li>
+</ul>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://www.example.org/posts/my-new-post/"><i class="fa fa-chevron-circle-left"></i> My First Post</a>
+        </li>
+        
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright &copy; 2017 - Author Name | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://www.example.org/index.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="https://www.example.org/js/scripts.js"></script>
+</body>
+
+</html>

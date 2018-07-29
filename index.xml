@@ -1,15 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Kiera</title>
+    <title>Infrastructure Guy</title>
     <link>https://glaspie.us/</link>
-    <description>Recent content on Kiera</description>
+    <description>Recent content on Infrastructure Guy</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright &amp;copy; 2018 - Joseph Glaspie</copyright>
-    <lastBuildDate>Sat, 28 Jul 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 25 Jul 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://glaspie.us/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>About</title>
+      <link>https://glaspie.us/about/</link>
+      <pubDate>Wed, 25 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://glaspie.us/about/</guid>
+      <description>I really should blog to not only practice my writting but share some technical issues I have come across in my professional life. Also, Hugo is the cool new hotness so this is a great opportunity to learn more about it.</description>
+    </item>
     
     <item>
       <title>Beware the Azure VM throttle</title>

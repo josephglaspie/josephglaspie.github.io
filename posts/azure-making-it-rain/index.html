@@ -72,13 +72,13 @@
 
 <article>
 
-    <h1>Beware the Azure VM throttle</h1>
+    <h1>Azure Cloud - Makin&#39; It Rain</h1>
 
     
         <aside>
     <ul>
         <li>
-            <time class="post-date" datetime="2018-07-28T00:00:00Z">Jul 28, 2018</time>
+            <time class="post-date" datetime="2018-09-04T19:13:44-05:00">Sep 4, 2018</time>
         </li>
         
         
@@ -90,39 +90,25 @@
 </aside>
     
 
-    
+    <p>One of the biggest advantages of deploying to the cloud is the ability to spin up large and spin up fast. You want a 64 x 1024 SQL box to run midnight batch jobs like no one&rsquo;s business, you bet. How about a 128 x 4000 beast with massive SSD IOPs and storage, sure not a problem. Need to quickly scale these boxes horizontally at a specific time or trigger on CPU spikes?</p>
 
-<p>One of my customers went live with their datawarehouse solution in Azure a few weeks back. Everything went smoothly until the analysts hit the boxes with more than they could handle and we had to rearchitect a new solution on the fly.</p>
+<p>You can do all of the above with just a few clicks in the portal, handful of lines in Powershell, and about 15 minutes cooking time. This is great if you have a need for near-instant massive compute power and a bottomless bank account. Unfortunately, we live in the real world which requires us to be good stewards of our resources. In this real world those servers cost real money: $7K and $27K per month respectively.</p>
 
-<p>I wanted to explain what we saw from at a high-level and in common language without making my fellow engineers cringe too much.</p>
+<p><img src="https://glaspie.us/sizes.png" alt="image alt text" /></p>
 
-<p>When building a Virtual Machine (VM) in the cloud there are many specs to look at. We typically focus on things like HDD size and speed, amount of RAM and CPU counts and cores.</p>
+<p>We recently had a customer who worked with the vendor to create a POC to rival their on-prem environment. Our customer was told to make it happen and let the bean counters worry about the cost. With the vendor&rsquo;s help they MADE IT RAIN. Massive VMs with 30 day full backups, ~100 unattached premium disks that were used once then left to rot like a 6th Street cigarette butt, and no way to understand how they were predicted to spend $1 million that year on infrastructure alone. Here&rsquo;s how we got to the bottom of the issue.</p>
 
-<p>However, to keep all the VMs in the cloud from stomping all over each other Azure throttles the VMs much like an HOA throttles your neighbor from building a body shop on their front yard.</p>
+<ol>
+<li>First, we checked out the Azure Advisor which only recommended about $100/month in savings.</li>
+<li>Then, we checked all of our backups and noticed that during the Microsoft Architect guided POC backups were setup to store a 30 days of full backups which we lowered to 3 days.</li>
+<li>Finally, we created an Azure automation runbook <a href="https://github.com/josephglaspie/Azure/blob/master/Get-UnusedAutomation.ps1">Get-UnusedAutomation.ps1</a> to gather all unattached disks and disks attacked to deallocated VMs and email our business analysis with the results weekly. Once we got approval to delete we imported the csv created in the previous step and used the following to remove the disks <a href="https://github.com/josephglaspie/Azure/blob/master/Remove-UnusedDisk.ps1">Remove-UnusedDisk.ps1</a>.</li>
+</ol>
 
-<p>The machines we are using are spec’d for High Memory usage but have a cached Disk IO of 512MB/s total.</p>
+<p>Using those strategies we were able to cut the monthly bill in half!</p>
 
-<p><img src="https://glaspie.us/Picture1.png" alt="image alt text" /></p>
+<p><img src="https://glaspie.us/before.png" alt="image alt text" /></p>
 
-<p>…This means that it only takes two 2TB disks at full utilization (250MB/s) to hit the Azure VM throttle of 512MB as highlighted above.</p>
-
-<p><img src="https://glaspie.us/disklimits.png" alt="image alt text" /></p>
-
-<p>Our VM has multiple &gt; 2TB disks attached with SQL running full speed. The CPU and RAM on the server are underutilized but the transaction times on the disks are at &gt; 1000ms instead of 15-20 in a healthy non-throttled machine. We have validated this with PerfMon the local windows performance counter tool.</p>
-
-<p>Currently, the L series VMs that have no storage throttles are available in East Us 2 where our subscription lives.</p>
-
-<h2 id="tldr">TLDR</h2>
-
-<p>We have a pontoon boat (optimized for memory) and even though we keep attaching motors and props the shape of the hull (VM) will only allow it to go about 15 MPHs. If you want it to go faster need to get a boat with a streamlined hull.</p>
-
-<h2 id="references">References:</h2>
-
-<ul>
-<li><a href="https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes-memory#esv3-series">Azure VMs</a></li>
-<li><a href="https://docs.microsoft.com/en-us/azure/virtual-machines/windows/premium-storage#scalability-and-performance-targets">Azure Disks</a></li>
-<li><a href="https://blogs.technet.microsoft.com/xiangwu/2017/05/14/azure-vm-storage-performance-and-throttling-demystify/">On Azure VM Throttling</a></li>
-</ul>
+<p>Thanks for reading.</p>
 
 
 </article>
@@ -132,13 +118,9 @@
     <ul>
         
         <li>
-            <a href="https://glaspie.us/posts/my-new-post/"><i class="fa fa-chevron-circle-left"></i> My First Post</a>
+            <a href="https://glaspie.us/posts/beware-the-azure-vm-throttle/"><i class="fa fa-chevron-circle-left"></i> Beware the Azure VM throttle</a>
         </li>
         
-        
-        <li>
-            <a href="https://glaspie.us/posts/azure-making-it-rain/">Azure Cloud - Makin&#39; It Rain <i class="fa fa-chevron-circle-right"></i> </a>
-        </li>
         
     </ul>
 </section>

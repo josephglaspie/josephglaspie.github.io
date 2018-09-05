@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Infrastructure Guy</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright &amp;copy; 2018 - Joseph Glaspie</copyright>
-    <lastBuildDate>Sat, 28 Jul 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 04 Sep 2018 19:13:44 -0500</lastBuildDate>
     
 	<atom:link href="https://glaspie.us/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Azure Cloud - Makin&#39; It Rain</title>
+      <link>https://glaspie.us/posts/azure-making-it-rain/</link>
+      <pubDate>Tue, 04 Sep 2018 19:13:44 -0500</pubDate>
+      
+      <guid>https://glaspie.us/posts/azure-making-it-rain/</guid>
+      <description>One of the biggest advantages of deploying to the cloud is the ability to spin up large and spin up fast. You want a 64 x 1024 SQL box to run midnight batch jobs like no one&amp;rsquo;s business, you bet.</description>
+    </item>
     
     <item>
       <title>Beware the Azure VM throttle</title>

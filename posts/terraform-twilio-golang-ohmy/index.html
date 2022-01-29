@@ -1,0 +1,391 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title>Terraform Twilio Golang Ohmy - Infrastructure Guy</title>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="The HTML5 Herald" />
+<meta name="author" content="josephglaspie" /><meta property="og:title" content="Terraform Twilio Golang Ohmy" />
+<meta property="og:description" content="Want to get your feet wet with a little Terraform, Twilio, EKS, and Golang? I created a super simple app that will allow you to text the number of friends you are with and reply back with a fun activity." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://glaspie.us/posts/terraform-twilio-golang-ohmy/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-01-28T10:47:37-06:00" />
+<meta property="article:modified_time" content="2022-01-28T10:47:37-06:00" />
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Terraform Twilio Golang Ohmy"/>
+<meta name="twitter:description" content="Want to get your feet wet with a little Terraform, Twilio, EKS, and Golang? I created a super simple app that will allow you to text the number of friends you are with and reply back with a fun activity."/>
+
+<meta name="generator" content="Hugo 0.92.1" />
+    
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://glaspie.us/fontawesome/css/all.min.css" />
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  
+  
+  <link rel="stylesheet" type="text/css" href="https://glaspie.us/css/styles.css" /></head>
+
+<body>
+  <div id="container">
+    <header>
+      
+      <h1>
+        <a href="https://glaspie.us/">Infrastructure Guy</a>
+      </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://www.facebook.com/" title="Facebook">
+               <i class="fab fa-facebook fa-lg"></i>
+               </a>
+             </li>
+             <li>
+               <a href="https://github.com/josephglaspie" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+             <li>
+               <a href="https://gitlab.com/" title="GitLab">
+               <i class="fab fa-gitlab fa-lg"></i>
+               </a>
+             </li>
+             <li>
+               <a href="https://twitter.com/" title="Twitter">
+               <i class="fab fa-twitter fa-lg"></i>
+               </a>
+             </li>
+             <li>
+               <a href="https://linkedin.com/in/josephglaspie" title="LinkedIn">
+               <i class="fab fa-linkedin fa-lg"></i>
+               </a>
+             </li>
+             <li>
+               <a href="https://www.instagram.com/" title="Instagram">
+               <i class="fab fa-instagram fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+      <p><em>Aha moments in the life of an Infrastructure Guy</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+        <li>
+            <a class="active" href="https://glaspie.us/posts/">
+                <i class="fa-li fa  fa-lg"></i><span>Posts</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://glaspie.us/about/">
+                <i class="fa-li fa  fa-lg"></i><span>About</span>
+            </a>
+        </li>
+        
+    </ul>
+</nav>
+
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Terraform Twilio Golang Ohmy</h1>
+
+    
+      <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2022-01-28T10:47:37-06:00">Jan 28, 2022</time>
+        </li>
+        
+        
+
+        
+
+        <li>3 minute read</li>
+    </ul>
+</aside>
+
+    
+
+    
+      
+
+    
+
+    <p>Want to get your feet wet with a little Terraform, Twilio, EKS, and Golang? I created a super simple app that will allow you to text the number of friends you are with and reply back with a fun activity.</p>
+<p>The app is built on top of AWS&rsquo;s Kubernetes (EKS). I wanted an easy setup that I could quickly destroy and not incure costs beyond the Free AWS Tier so leveraged Terraform to do so.</p>
+<p>The Bored API doesn&rsquo;t require an authentication so it&rsquo;s super easy to make rest calls against it.</p>
+<p>Here&rsquo;s the tutorial if you want to give it a shot.</p>
+<pre tabindex="0"><code>curl --location --request POST 'http://k8s-bored-ingressb-a7cccb6576-1355983709.us-east-2.elb.amazonaws.com/bored' \
+--header 'Content-Type: text/plain' \
+--data-raw '5'
+</code></pre><p>and return results with something fun to do.</p>
+<h3 id="prerequisites">Prerequisites</h3>
+<pre tabindex="0"><code>#install Go
+brew install go
+
+#install Terraform
+brew install terraform
+
+#install Docker
+brew cask install docker
+
+#install minikube
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-darwin-amd64
+sudo install minikube-darwin-amd64 /usr/local/bin/minikube
+
+#install Kubectl
+curl -LO &quot;https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/darwin/amd64/kubectl&quot;
+
+</code></pre><h4 id="to-run-locally">To run locally</h4>
+<p><code>go run app.go</code></p>
+<h4 id="push-to-docker-hub">Push to Docker Hub</h4>
+<pre tabindex="0"><code>APP_TAG=josephglaspie/bored:v0.0.5
+docker build . -t $APP_TAG
+docker push $APP_TAG
+</code></pre><h4 id="to-deploy-to-minikube">To deploy to minikube</h4>
+<pre tabindex="0"><code>kubectl apply -f deployments/mini-deployment.yaml
+# The following will return the port
+minikube service web
+</code></pre><h4 id="make-available-online-with-ngrok">Make available online with ngrok</h4>
+<pre tabindex="0"><code>ngrok http http://127.0.0.1:56952
+</code></pre><p>Take the return from ngrok and add it to the twilio webhook</p>
+<h4 id="eks">EKS</h4>
+<ul>
+<li>Used eks module: <a href="https://registry.terraform.io/modules/terraform-aws-modules/eks/aws/latest">https://registry.terraform.io/modules/terraform-aws-modules/eks/aws/latest</a></li>
+<li>Create main.tf as seen in this repo and tfvars.tf (.gitignore) with the following:</li>
+</ul>
+<pre tabindex="0"><code>provider &quot;aws&quot; {
+  region     = &quot;us-east-2&quot;
+  access_key = &quot;&quot;
+  secret_key = &quot;&quot;
+}
+</code></pre><ul>
+<li>You can get your access_key and secret_key from the security credential part of the console
+<a href="https://console.aws.amazon.com/iam/home?region=us-east-2#/security_credentials">https://console.aws.amazon.com/iam/home?region=us-east-2#/security_credentials</a></li>
+<li>Acess Keys &gt; Create new key</li>
+</ul>
+<pre tabindex="0"><code>cd terraform
+terraform init
+terraform plan
+terraform apply #Go make some tea or coffee this will take around 10 minutes to build out
+cd ..
+
+# Connect your kubectl to the cluster
+aws configure #paste your keys into the correct places
+aws eks --region us-east-2 update-kubeconfig --name mycluster
+# Will return something like: Updated context arn:aws:eks:us-east-2:244172242562:cluster/mycluster in /Users/name/.kube/config
+
+</code></pre><h3 id="ingress">Ingress</h3>
+<ul>
+<li><a href="https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html">The Best Ingress Doc</a></li>
+<li><a href="https://github.com/kubernetes-sigs/aws-load-balancer-controller">AWS Ingress Github</a></li>
+<li><a href="https://docs.aws.amazon.com/eks/latest/userguide/aws-load-balancer-controller.html">AWS App Load Balancer</a></li>
+<li><a href="https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.3/how-it-works/">How AWS Load Balancer controller works</a></li>
+</ul>
+<pre tabindex="0"><code>#Create IAM Policy
+aws iam create-policy \
+--policy-name AWSLoadBalancerControllerIAMPolicy \
+--policy-document file://iam_policy.json
+
+#Create service account
+myaccount=244172242562
+clustername=mycluster
+eksctl create iamserviceaccount \
+--cluster=$clustername \
+--namespace=kube-system \
+--name=aws-load-balancer-controller \
+--attach-policy-arn=arn:aws:iam::$myaccount:policy/AWSLoadBalancerControllerIAMPolicy \
+--override-existing-serviceaccounts \
+--approve
+
+eksctl utils associate-iam-oidc-provider --region=us-east-2 --cluster=mycluster --approve
+
+# Install cert-manager to inject certificate configuration into the webhooks.
+kubectl apply \
+--validate=false \
+-f https://github.com/jetstack/cert-manager/releases/download/v1.5.4/cert-manager.yaml
+
+# Download and replace default cluster name with your own
+curl -Lo deployments/loadbalancer.yaml https://github.com/kubernetes-sigs/aws-load-balancer-controller/releases/download/v2.3.0/v2_3_0_full.yaml
+# Apply ALB with correct cluster name
+kubectl apply -f deployments/loadbalancer.yaml
+
+# Check on ALB deployment
+kubectl get deployment -n kube-system aws-load-balancer-controller
+kubectl logs -n kube-system   deployment.apps/aws-load-balancer-controller
+
+</code></pre><ol>
+<li>Log into console and tage subnets with the following:
+Key – kubernetes.io/role/elb
+Value – 1</li>
+<li>Also, download the sample app and change out the settings with your own AND add your subnets to the ingress annotation:</li>
+</ol>
+<pre tabindex="0"><code>curl -Lo deployments/web-deployment.yaml https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.3.0/docs/examples/2048/2048_full.yaml
+alb.ingress.kubernetes.io/subnets: subnet-0213058ab09c17cca, subnet-003c36f6f9c457619, subnet-00a17755b8471dbd5
+</code></pre><pre tabindex="0"><code># Test connection
+k get pods -n kube-system
+# Deploy app with service and ingress
+k apply -f deployments/web-deployment.yaml
+# Check ingress
+kubectl get ingress/ingress-bored -n bored
+
+#get external public ip
+k get svc
+NAME                       TYPE           CLUSTER-IP       EXTERNAL-IP                                                               PORT(S)          AGE
+kubernetes                 ClusterIP      10.100.0.1       &lt;none&gt;                                                                    443/TCP          10m
+web                        NodePort       10.100.130.96    &lt;none&gt;                                                                    8080:31317/TCP   10s
+web-service-cluster-ip     ClusterIP      10.100.231.227   &lt;none&gt;                                                                    8080/TCP         10s
+web-service-loadbalancer   LoadBalancer   10.100.121.221   a93868263dcf34d12b029f8c080c8951-1996062109.us-east-2.elb.amazonaws.com   8080:30061/TCP   10s
+web-service-nodeport       NodePort       10.100.143.240   &lt;none&gt;                                                                    80:31549/TCP     10s
+
+curl --location --request POST 'http://k8s-bored-ingressb-a7cccb6576-1355983709.us-east-2.elb.amazonaws.com/bored' \
+--header 'Content-Type: text/plain' \
+--data-raw '5'
+
+terraform destroy
+</code></pre><h2 id="references">References:</h2>
+<ul>
+<li><a href="https://www.boredapi.com/">Bored Api</a></li>
+<li><a href="https://aws.amazon.com/eks/">EKS</a></li>
+<li><a href="https://www.twilio.com/sms">Twilio</a></li>
+</ul>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        <li>
+        
+            <a href="https://glaspie.us/posts/azure-making-it-rain/"><i class="fa fa-chevron-circle-left"></i> Azure Cloud - Makin&#39; It Rain</a>
+        
+        </li>
+        <li>
+        
+        </li>
+    </ul>
+</section>
+  
+    
+    
+        <section class="comments-block">
+      <button id="show-comments" style="display: none;"><i class="fa fa-comments"></i> Add/View Comments</button>
+</section>
+
+<section id="disqus_thread"></section>
+
+<script>
+      (function () {
+            
+            
+            if (window.location.hostname == "localhost")
+                  return;
+
+            var disqus_loaded = false;
+            var disqus_shortname = 'glaspie-us';
+            var disqus_button = document.getElementById("show-comments");
+
+            var disqus_autoload =  null ;
+            var disable_comment =  null ;
+
+            if (disable_comment)
+                  return;
+
+            disqus_button.style.display = "";
+
+            if (disqus_autoload){
+                  disqus();
+            }else{
+                  disqus_button.addEventListener("click", disqus, false);
+            }
+
+            function disqus() {
+
+                  if (!disqus_loaded) {
+                        disqus_loaded = true;
+
+                        var e = document.createElement("script");
+                        e.type = "text/javascript";
+                        e.async = true;
+                        e.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+                        (document.getElementsByTagName("head")[0] ||
+                              document.getElementsByTagName("body")[0])
+                        .appendChild(e);
+
+                        
+                        document.getElementById("show-comments").style.display = "none";
+                  }
+            }
+
+            
+            var hash = window.location.hash.substr(1);
+            if (hash.length > 8) {
+                  if (hash.substring(0, 8) == "comment-") {
+                        disqus();
+                  }
+            }
+
+            
+            if (/bot|google|baidu|bing|msn|duckduckgo|slurp|yandex/i.test(navigator.userAgent)) {
+                  disqus();
+            }
+      })();
+</script>
+
+    
+  
+
+
+
+
+
+</main>
+    <footer>
+        <ul>
+            <li>
+                <h6>Copyright © 2018 - Joseph Glaspie | 
+                    Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+                    <a href="https://glaspie.usindex.xml">Subscribe </a></h6>
+            </li>
+            
+            
+        </ul>
+    </footer>
+</div>
+<script src="https://glaspie.us/js/scripts.js"></script>
+
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-109425230-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+</body>
+
+</html>
+

@@ -3,11 +3,11 @@
 <html lang="en">
 
 <head>
-  <title>Terraform Twilio Golang Ohmy - Infrastructure Guy</title>
+  <title>Terraform Twilio Golang Oh-my - Infrastructure Guy</title>
   <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="description" content="The HTML5 Herald" />
-<meta name="author" content="josephglaspie" /><meta property="og:title" content="Terraform Twilio Golang Ohmy" />
+<meta name="author" content="josephglaspie" /><meta property="og:title" content="Terraform Twilio Golang Oh-my" />
 <meta property="og:description" content="Want to get your feet wet with a little Terraform, Twilio, EKS, and Golang? I created a super simple app that will allow you to text the number of friends you are with and reply back with a fun activity." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://glaspie.us/posts/terraform-twilio-golang-ohmy/" /><meta property="article:section" content="posts" />
@@ -16,7 +16,7 @@
 
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Terraform Twilio Golang Ohmy"/>
+<meta name="twitter:title" content="Terraform Twilio Golang Oh-my"/>
 <meta name="twitter:description" content="Want to get your feet wet with a little Terraform, Twilio, EKS, and Golang? I created a super simple app that will allow you to text the number of friends you are with and reply back with a fun activity."/>
 
 <meta name="generator" content="Hugo 0.92.1" />
@@ -102,7 +102,7 @@
 
 <article>
 
-    <h1>Terraform Twilio Golang Ohmy</h1>
+    <h1>Terraform Twilio Golang Oh-my</h1>
 
     
       <aside>
@@ -129,7 +129,7 @@
     <p>Want to get your feet wet with a little Terraform, Twilio, EKS, and Golang? I created a super simple app that will allow you to text the number of friends you are with and reply back with a fun activity.</p>
 <p>The app is built on top of AWS&rsquo;s Kubernetes (EKS). I wanted an easy setup that I could quickly destroy and not incure costs beyond the Free AWS Tier so leveraged Terraform to do so.</p>
 <p>The Bored API doesn&rsquo;t require an authentication so it&rsquo;s super easy to make rest calls against it.</p>
-<p>Here&rsquo;s the tutorial if you want to give it a shot.</p>
+<p>Here&rsquo;s the tutorial if you want to give it a shot or the <a href="https://github.com/josephglaspie/golangBored">repo</a> if you&rsquo;d rather skip my rambling and go strait to the code.</p>
 <pre tabindex="0"><code>curl --location --request POST 'http://k8s-bored-ingressb-a7cccb6576-1355983709.us-east-2.elb.amazonaws.com/bored' \
 --header 'Content-Type: text/plain' \
 --data-raw '5'

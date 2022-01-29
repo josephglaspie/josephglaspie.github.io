@@ -1,45 +1,74 @@
 <!doctype html>
-<link rel="shortcut icon" href="https://glaspie.us/favicon.ico?v=kPP08pKEXB">
-
 
 <html lang="en">
 
 <head>
-  
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-109425230-2"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-109425230-2');
-</script>
-
-  <title>Infrastructure Guy</title>
+  <title>Azure Cloud - Makin&#39; It Rain - Infrastructure Guy</title>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="The HTML5 Herald" />
-  <meta name="author" content="josephglaspie" />
-  <meta name="generator" content="Hugo 0.45.1" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
-  <link rel="stylesheet" type="text/css" href="https://glaspie.us/css/styles.css" />
-</head>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="The HTML5 Herald" />
+<meta name="author" content="josephglaspie" /><meta property="og:title" content="Azure Cloud - Makin&#39; It Rain" />
+<meta property="og:description" content="One of the biggest advantages of deploying to the cloud is the ability to spin up large and spin up fast. You want a 64 x 1024 SQL box to run midnight batch jobs like no one&rsquo;s business, you bet." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://glaspie.us/posts/azure-making-it-rain/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2018-09-04T19:13:44-05:00" />
+<meta property="article:modified_time" content="2018-09-04T19:13:44-05:00" />
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Azure Cloud - Makin&#39; It Rain"/>
+<meta name="twitter:description" content="One of the biggest advantages of deploying to the cloud is the ability to spin up large and spin up fast. You want a 64 x 1024 SQL box to run midnight batch jobs like no one&rsquo;s business, you bet."/>
+
+<meta name="generator" content="Hugo 0.92.1" />
+    
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://glaspie.us/fontawesome/css/all.min.css" />
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  
+  
+  <link rel="stylesheet" type="text/css" href="https://glaspie.us/css/styles.css" /></head>
 
 <body>
   <div id="container">
     <header>
+      
       <h1>
-                <a href="https://glaspie.us/">Infrastructure Guy</a>
-            </h1>
+        <a href="https://glaspie.us/">Infrastructure Guy</a>
+      </h1>
 
       <ul id="social-media">
-         
-        <li><a href="https://www.linkedin.com/in/josephglaspie"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-         
-        <li><a href="https://github.com/josephglaspie"><i class="fa fa-github fa-lg" aria-hidden="true"></i></a></li>
-           
+             <li>
+               <a href="https://www.facebook.com/" title="Facebook">
+               <i class="fab fa-facebook fa-lg"></i>
+               </a>
+             </li>
+             <li>
+               <a href="https://github.com/josephglaspie" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+             <li>
+               <a href="https://gitlab.com/" title="GitLab">
+               <i class="fab fa-gitlab fa-lg"></i>
+               </a>
+             </li>
+             <li>
+               <a href="https://twitter.com/" title="Twitter">
+               <i class="fab fa-twitter fa-lg"></i>
+               </a>
+             </li>
+             <li>
+               <a href="https://linkedin.com/in/josephglaspie" title="LinkedIn">
+               <i class="fab fa-linkedin fa-lg"></i>
+               </a>
+             </li>
+             <li>
+               <a href="https://www.instagram.com/" title="Instagram">
+               <i class="fab fa-instagram fa-lg"></i>
+               </a>
+             </li>
       </ul>
       
       <p><em>Aha moments in the life of an Infrastructure Guy</em></p>
@@ -51,7 +80,7 @@
     <ul>
         
         <li>
-            <a class="" href="https://glaspie.us/posts/">
+            <a class="active" href="https://glaspie.us/posts/">
                 <i class="fa-li fa  fa-lg"></i><span>Posts</span>
             </a>
         </li>
@@ -65,6 +94,7 @@
     </ul>
 </nav>
 
+
     <main>
 
 
@@ -75,7 +105,7 @@
     <h1>Azure Cloud - Makin&#39; It Rain</h1>
 
     
-        <aside>
+      <aside>
     <ul>
         <li>
             <time class="post-date" datetime="2018-09-04T19:13:44-05:00">Sep 4, 2018</time>
@@ -85,31 +115,29 @@
 
         
 
-        <li>2 min read</li>
+        <li>2 minute read</li>
     </ul>
 </aside>
+
     
 
-    <p><img src="https://glaspie.us/rain.jpg" alt="image alt text" /></p>
+    
+      
 
+    
+
+    <p><img src="https://glaspie.us/rain.jpg" alt="image alt text"></p>
 <p>One of the biggest advantages of deploying to the cloud is the ability to spin up large and spin up fast. You want a 64 x 1024 SQL box to run midnight batch jobs like no one&rsquo;s business, you bet. How about a 128 x 4000 beast with massive SSD IOPs and storage, sure not a problem. Need to quickly scale these boxes horizontally at a specific time or trigger on CPU spikes?</p>
-
 <p>You can do all of the above with just a few clicks in the portal, handful of lines in Powershell, and about 15 minutes cooking time. This is great if you have a need for near-instant massive compute power and a bottomless bank account. Unfortunately, we live in the real world which requires us to be good stewards of our resources. In this real world those servers cost real money: $7K and $27K per month respectively.</p>
-
-<p><img src="https://glaspie.us/sizes.png" alt="image alt text" /></p>
-
+<p><img src="https://glaspie.us/sizes.png" alt="image alt text"></p>
 <p>We recently had a customer who worked with the vendor to create a POC to rival their on-prem environment. Our customer was told to make it happen and let the bean counters worry about the cost. With the vendor&rsquo;s help they MADE IT RAIN. Massive VMs with 30 day full backups, ~100 unattached premium disks that were used once then left to rot like a 6th Street cigarette butt, and no way to understand how they were predicted to spend $1 million that year on infrastructure alone. Here&rsquo;s how we got to the bottom of the issue.</p>
-
 <ol>
 <li>First, we checked out the Azure Advisor which only recommended about $100/month in savings.</li>
 <li>Then, we checked all of our backups and noticed that during the Microsoft Architect guided POC backups were setup to store a 30 days of full backups which we lowered to 3 days.</li>
 <li>Finally, we created an Azure automation runbook <a href="https://github.com/josephglaspie/Azure/blob/master/Get-UnusedAutomation.ps1">Get-UnusedAutomation.ps1</a> to gather all unattached disks and disks attacked to deallocated VMs and email our business analysis with the results weekly. Once we got approval to delete we imported the csv created in the previous step and used the following to remove the disks <a href="https://github.com/josephglaspie/Azure/blob/master/Remove-UnusedDisk.ps1">Remove-UnusedDisk.ps1</a>.</li>
 </ol>
-
 <p>Using those strategies we were able to cut the monthly bill in half!</p>
-
-<p><img src="https://glaspie.us/before.png" alt="image alt text" /></p>
-
+<p><img src="https://glaspie.us/before.png" alt="image alt text"></p>
 <p>Thanks for reading.</p>
 
 
@@ -118,17 +146,21 @@
 
 <section class="post-nav">
     <ul>
-        
         <li>
+        
             <a href="https://glaspie.us/posts/beware-the-azure-vm-throttle/"><i class="fa fa-chevron-circle-left"></i> Beware the Azure VM throttle</a>
+        
         </li>
+        <li>
         
-        
+        </li>
     </ul>
 </section>
+  
+    
     
         <section class="comments-block">
-      <button id="show-comments" style="display: none;"><i class="fa fa-comments-o"></i> Add/View Comments</button>
+      <button id="show-comments" style="display: none;"><i class="fa fa-comments"></i> Add/View Comments</button>
 </section>
 
 <section id="disqus_thread"></section>
@@ -144,8 +176,19 @@
             var disqus_shortname = 'glaspie-us';
             var disqus_button = document.getElementById("show-comments");
 
+            var disqus_autoload =  null ;
+            var disable_comment =  null ;
+
+            if (disable_comment)
+                  return;
+
             disqus_button.style.display = "";
-            disqus_button.addEventListener("click", disqus, false);
+
+            if (disqus_autoload){
+                  disqus();
+            }else{
+                  disqus_button.addEventListener("click", disqus, false);
+            }
 
             function disqus() {
 
@@ -179,7 +222,9 @@
             }
       })();
 </script>
+
     
+  
 
 
 
@@ -187,12 +232,34 @@
 
 </main>
     <footer>
-        <h6>Copyright &copy; 2018 - Joseph Glaspie | 
-            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
-            <a href="https://glaspie.us/index.xml">Subscribe</a></h6>
+        <ul>
+            <li>
+                <h6>Copyright © 2018 - Joseph Glaspie | 
+                    Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+                    <a href="https://glaspie.usindex.xml">Subscribe </a></h6>
+            </li>
+            
+            
+        </ul>
     </footer>
 </div>
 <script src="https://glaspie.us/js/scripts.js"></script>
+
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-109425230-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
 </body>
 
 </html>

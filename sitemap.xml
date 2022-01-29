@@ -1,46 +1,27 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
     <loc>https://glaspie.us/posts/</loc>
     <lastmod>2018-09-04T19:13:44-05:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://glaspie.us/about/</loc>
     <lastmod>2018-07-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://glaspie.us/posts/azure-making-it-rain/</loc>
     <lastmod>2018-09-04T19:13:44-05:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
+    <loc>https://glaspie.us/</loc>
+    <lastmod>2018-09-04T19:13:44-05:00</lastmod>
+  </url><url>
     <loc>https://glaspie.us/posts/beware-the-azure-vm-throttle/</loc>
     <lastmod>2018-07-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://glaspie.us/posts/my-new-post/</loc>
     <lastmod>2018-07-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://glaspie.us/categories/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://glaspie.us/</loc>
-    <lastmod>2018-07-25T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://glaspie.us/tags/</loc>
-    <priority>0</priority>
   </url>
-  
 </urlset>

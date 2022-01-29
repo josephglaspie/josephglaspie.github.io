@@ -1,51 +1,42 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Infrastructure Guy</title>
-    <link>https://glaspie.us/</link>
-    <description>Recent content on Infrastructure Guy</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <copyright>Copyright &amp;copy; 2018 - Joseph Glaspie</copyright>
-    <lastBuildDate>Wed, 25 Jul 2018 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://glaspie.us/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>About</title>
-      <link>https://glaspie.us/about/</link>
-      <pubDate>Wed, 25 Jul 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://glaspie.us/about/</guid>
-      <description>I really should blog to not only practice my writting but share some technical issues I have come across in my professional life. Also, Hugo is the cool new hotness so this is a great opportunity to learn more about it.</description>
-    </item>
-    
-    <item>
-      <title>Azure Cloud - Makin&#39; It Rain</title>
-      <link>https://glaspie.us/posts/azure-making-it-rain/</link>
-      <pubDate>Tue, 04 Sep 2018 19:13:44 -0500</pubDate>
-      
-      <guid>https://glaspie.us/posts/azure-making-it-rain/</guid>
-      <description>One of the biggest advantages of deploying to the cloud is the ability to spin up large and spin up fast. You want a 64 x 1024 SQL box to run midnight batch jobs like no one&amp;rsquo;s business, you bet.</description>
-    </item>
-    
-    <item>
-      <title>Beware the Azure VM throttle</title>
-      <link>https://glaspie.us/posts/beware-the-azure-vm-throttle/</link>
-      <pubDate>Sat, 28 Jul 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://glaspie.us/posts/beware-the-azure-vm-throttle/</guid>
-      <description>One of my customers went live with their datawarehouse solution in Azure a few weeks back. Everything went smoothly until the analysts hit the boxes with more than they could handle and we had to rearchitect a new solution on the fly.</description>
-    </item>
-    
-    <item>
-      <title>My First Post</title>
-      <link>https://glaspie.us/posts/my-new-post/</link>
-      <pubDate>Sat, 28 Jul 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://glaspie.us/posts/my-new-post/</guid>
-      <description>Hello world this is my first post! I&amp;rsquo;ve written a couple of blogs for work and wanted to try out Hugo.</description>
-    </item>
-    
-  </channel>
+ <channel>
+   <title>Infrastructure Guy</title>
+   <link>https://glaspie.us/</link>
+   <description>Recent content on Infrastructure Guy</description>
+   <generator>Hugo -- gohugo.io</generator>
+   <copyright>Copyright &amp;copy; 2018 - Joseph Glaspie</copyright>
+   <lastBuildDate>Tue, 04 Sep 2018 19:13:44 -0500</lastBuildDate>
+   
+       <atom:link href="https://glaspie.us/index.xml" rel="self" type="application/rss+xml" />
+   
+   
+     <item>
+       <title>Azure Cloud - Makin&#39; It Rain</title>
+       <link>https://glaspie.us/posts/azure-making-it-rain/</link>
+       <pubDate>Tue, 04 Sep 2018 19:13:44 -0500</pubDate>
+       
+       <guid>https://glaspie.us/posts/azure-making-it-rain/</guid>
+       <description>&lt;p&gt;&lt;img src=&#34;https://glaspie.us/rain.jpg&#34; alt=&#34;image alt text&#34;&gt;&lt;/p&gt;&lt;p&gt;One of the biggest advantages of deploying to the cloud is the ability to spin up large and spin up fast. You want a 64 x 1024 SQL box to run midnight batch jobs like no one&amp;rsquo;s business, you bet. How about a 128 x 4000 beast with massive SSD IOPs and storage, sure not a problem. Need to quickly scale these boxes horizontally at a specific time or trigger on CPU spikes?&lt;/p&gt;&lt;p&gt;You can do all of the above with just a few clicks in the portal, handful of lines in Powershell, and about 15 minutes cooking time. This is great if you have a need for near-instant massive compute power and a bottomless bank account. Unfortunately, we live in the real world which requires us to be good stewards of our resources. In this real world those servers cost real money: $7K and $27K per month respectively.&lt;/p&gt;&lt;p&gt;&lt;img src=&#34;https://glaspie.us/sizes.png&#34; alt=&#34;image alt text&#34;&gt;&lt;/p&gt;&lt;p&gt;We recently had a customer who worked with the vendor to create a POC to rival their on-prem environment. Our customer was told to make it happen and let the bean counters worry about the cost. With the vendor&amp;rsquo;s help they MADE IT RAIN. Massive VMs with 30 day full backups, ~100 unattached premium disks that were used once then left to rot like a 6th Street cigarette butt, and no way to understand how they were predicted to spend $1 million that year on infrastructure alone. Here&amp;rsquo;s how we got to the bottom of the issue.&lt;/p&gt;&lt;ol&gt;&lt;li&gt;First, we checked out the Azure Advisor which only recommended about $100/month in savings.&lt;/li&gt;&lt;li&gt;Then, we checked all of our backups and noticed that during the Microsoft Architect guided POC backups were setup to store a 30 days of full backups which we lowered to 3 days.&lt;/li&gt;&lt;li&gt;Finally, we created an Azure automation runbook &lt;a href=&#34;https://github.com/josephglaspie/Azure/blob/master/Get-UnusedAutomation.ps1&#34;&gt;Get-UnusedAutomation.ps1&lt;/a&gt; to gather all unattached disks and disks attacked to deallocated VMs and email our business analysis with the results weekly. Once we got approval to delete we imported the csv created in the previous step and used the following to remove the disks &lt;a href=&#34;https://github.com/josephglaspie/Azure/blob/master/Remove-UnusedDisk.ps1&#34;&gt;Remove-UnusedDisk.ps1&lt;/a&gt;.&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;Using those strategies we were able to cut the monthly bill in half!&lt;/p&gt;&lt;p&gt;&lt;img src=&#34;https://glaspie.us/before.png&#34; alt=&#34;image alt text&#34;&gt;&lt;/p&gt;&lt;p&gt;Thanks for reading.&lt;/p&gt;</description>
+     </item>
+   
+     <item>
+       <title>Beware the Azure VM throttle</title>
+       <link>https://glaspie.us/posts/beware-the-azure-vm-throttle/</link>
+       <pubDate>Sat, 28 Jul 2018 00:00:00 +0000</pubDate>
+       
+       <guid>https://glaspie.us/posts/beware-the-azure-vm-throttle/</guid>
+       <description>&lt;p&gt;One of my customers went live with their datawarehouse solution in Azure a few weeks back. Everything went smoothly until the analysts hit the boxes with more than they could handle and we had to rearchitect a new solution on the fly.&lt;/p&gt;&lt;p&gt;I wanted to explain what we saw from at a high-level and in common language without making my fellow engineers cringe too much.&lt;/p&gt;&lt;p&gt;When building a Virtual Machine (VM) in the cloud there are many specs to look at. We typically focus on things like HDD size and speed, amount of RAM and CPU counts and cores.&lt;/p&gt;&lt;p&gt;However, to keep all the VMs in the cloud from stomping all over each other Azure throttles the VMs much like an HOA throttles your neighbor from building a body shop on their front yard.&lt;/p&gt;&lt;p&gt;The machines we are using are spec’d for High Memory usage but have a cached Disk IO of 512MB/s total.&lt;/p&gt;&lt;p&gt;&lt;img src=&#34;https://glaspie.us/Picture1.png&#34; alt=&#34;image alt text&#34;&gt;&lt;/p&gt;&lt;p&gt;…This means that it only takes two 2TB disks at full utilization (250MB/s) to hit the Azure VM throttle of 512MB as highlighted above.&lt;/p&gt;&lt;p&gt;&lt;img src=&#34;https://glaspie.us/disklimits.png&#34; alt=&#34;image alt text&#34;&gt;&lt;/p&gt;&lt;p&gt;Our VM has multiple &amp;gt; 2TB disks attached with SQL running full speed. The CPU and RAM on the server are underutilized but the transaction times on the disks are at &amp;gt; 1000ms instead of 15-20 in a healthy non-throttled machine. We have validated this with PerfMon the local windows performance counter tool.&lt;/p&gt;&lt;p&gt;Currently, the L series VMs that have no storage throttles are available in East Us 2 where our subscription lives.&lt;/p&gt;&lt;h2 id=&#34;tldr&#34;&gt;TLDR&lt;/h2&gt;&lt;p&gt;We have a pontoon boat (optimized for memory) and even though we keep attaching motors and props the shape of the hull (VM) will only allow it to go about 15 MPHs. If you want it to go faster need to get a boat with a streamlined hull.&lt;/p&gt;&lt;h2 id=&#34;references&#34;&gt;References:&lt;/h2&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&#34;https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes-memory#esv3-series&#34;&gt;Azure VMs&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&#34;https://docs.microsoft.com/en-us/azure/virtual-machines/windows/premium-storage#scalability-and-performance-targets&#34;&gt;Azure Disks&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&#34;https://blogs.technet.microsoft.com/xiangwu/2017/05/14/azure-vm-storage-performance-and-throttling-demystify/&#34;&gt;On Azure VM Throttling&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;</description>
+     </item>
+   
+     <item>
+       <title>My First Post</title>
+       <link>https://glaspie.us/posts/my-new-post/</link>
+       <pubDate>Sat, 28 Jul 2018 00:00:00 +0000</pubDate>
+       
+       <guid>https://glaspie.us/posts/my-new-post/</guid>
+       <description>&lt;p&gt;Hello world this is my first post! I&amp;rsquo;ve written a couple of blogs for work and wanted to try out &lt;a href=&#34;https://gohugo.io/&#34;&gt;Hugo&lt;/a&gt;.&lt;/p&gt;</description>
+     </item>
+   
+ </channel>
 </rss>

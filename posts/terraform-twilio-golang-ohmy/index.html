@@ -141,7 +141,14 @@ docker push $APP_TAG
 <pre tabindex="0"><code>kubectl apply -f deployments/mini-deployment.yaml
 # The following will return the port
 minikube service web
-</code></pre><h4 id="make-available-online-with-ngrok">Make available online with ngrok</h4>
+</code></pre><h4 id="setup-twilio-sms-number">Setup Twilio sms number</h4>
+<ol>
+<li>Go to Twilio.com and setup a free trial account</li>
+<li>Get a phone number</li>
+<li>Go to that phone number and setup a webhook</li>
+<li>Check out this <a href="https://www.twilio.com/docs/usage/webhooks/getting-started-twilio-webhooks">tutorial</a> for details</li>
+</ol>
+<h4 id="make-available-online-with-ngrok">Make available online with ngrok</h4>
 <pre tabindex="0"><code>ngrok http http://127.0.0.1:56952
 </code></pre><p>Take the return from ngrok and add it to the twilio webhook</p>
 <h4 id="eks">EKS</h4>
@@ -339,7 +346,7 @@ terraform destroy
     <footer>
         <ul>
             <li>
-                <h6>Copyright © 2018 - Joseph Glaspie | 
+                <h6>Copyright © 2022 - Joseph Glaspie | 
                     Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
                     <a href="https://glaspie.usindex.xml">Subscribe </a></h6>
             </li>

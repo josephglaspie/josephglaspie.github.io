@@ -95,7 +95,7 @@
 
         
 
-        <li>3 minute read</li>
+        <li>4 minute read</li>
     </ul>
 </aside>
 
@@ -108,7 +108,7 @@
 
     <p>Want to get your feet wet with a little Terraform, Twilio, EKS, and Golang? I created a super simple app that will allow you to text the number of friends you are with and reply back with a fun activity.</p>
 <p>The app is built on top of AWS&rsquo;s Kubernetes (EKS). I wanted an easy setup that I could quickly destroy and not incure costs beyond the Free AWS Tier so leveraged Terraform to do so.</p>
-<p>The Bored API doesn&rsquo;t require an authentication so it&rsquo;s super easy to make rest calls against it.</p>
+<p>The Bored API doesn&rsquo;t require an authentication so it&rsquo;s super easy to make rest calls against it. The reason behind using Terraform was so that I could tear down the infrastructure and build it back identically. The only &ldquo;gotcha&rdquo; I found was that the Terraform wouldn&rsquo;t remove all of the service accounts created so you gotta clear those out with a script. I&rsquo;m happy to throw something together if you hit me up on LinkedIn.</p>
 <p>Here&rsquo;s the tutorial if you want to give it a shot or the <a href="https://github.com/josephglaspie/golangBored">repo</a> if you&rsquo;d rather skip my rambling and go strait to the code.</p>
 <pre tabindex="0"><code>curl --location --request POST 'http://k8s-bored-ingressb-a7cccb6576-1355983709.us-east-2.elb.amazonaws.com/bored' \
 --header 'Content-Type: text/plain' \

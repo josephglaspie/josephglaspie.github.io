@@ -1,0 +1,235 @@
+/* ===== Print Styles ===== */
+@media print {
+    * {
+        background: white !important;
+        color: black !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    body {
+        font-size: 11pt;
+        line-height: 1.4;
+        background: white;
+    }
+
+    .container {
+        max-width: 100%;
+        padding: 0;
+    }
+
+    /* Header */
+    .header {
+        background: white !important;
+        color: black !important;
+        padding: 0 0 1rem 0;
+        margin-bottom: 1rem;
+        box-shadow: none !important;
+        border-bottom: 2px solid black;
+    }
+
+    .name {
+        font-size: 24pt;
+        color: black !important;
+        margin-bottom: 0.25rem;
+    }
+
+    .title {
+        font-size: 14pt;
+        color: black !important;
+        opacity: 1;
+        margin-bottom: 0.5rem;
+    }
+
+    .contact-info {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        font-size: 10pt;
+    }
+
+    .contact-item {
+        color: black !important;
+        opacity: 1;
+    }
+
+    .icon {
+        display: none;
+    }
+
+    /* Main Content */
+    .main {
+        background: white !important;
+        box-shadow: none !important;
+        padding: 0;
+        margin: 0;
+    }
+
+    /* Sections */
+    .section {
+        margin-bottom: 1.5rem;
+        page-break-inside: avoid;
+    }
+
+    .section-title {
+        color: black !important;
+        border-bottom: 2px solid black !important;
+        padding-bottom: 0.25rem;
+        margin-bottom: 0.75rem;
+        font-size: 14pt;
+        page-break-after: avoid;
+    }
+
+    /* Objective */
+    .objective-text {
+        font-size: 11pt;
+        color: black !important;
+    }
+
+    /* Experience */
+    .job {
+        margin-bottom: 1rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid #ccc !important;
+        page-break-inside: avoid;
+    }
+
+    .job:last-child {
+        border-bottom: none !important;
+    }
+
+    .job-header {
+        margin-bottom: 0.5rem;
+    }
+
+    .job-title {
+        font-size: 12pt;
+        color: black !important;
+        margin-bottom: 0.25rem;
+    }
+
+    .company {
+        font-size: 11pt;
+        color: black !important;
+        font-weight: 600;
+    }
+
+    .job-period {
+        font-size: 10pt;
+        color: #333 !important;
+    }
+
+    .job-focus {
+        font-size: 10pt;
+        color: #333 !important;
+        margin-bottom: 0.5rem;
+    }
+
+    .job-achievements {
+        margin-left: 1rem;
+    }
+
+    .job-achievements li {
+        padding-left: 0;
+        margin-bottom: 0.5rem;
+        color: black !important;
+        font-size: 10pt;
+    }
+
+    .job-achievements li::before {
+        content: '• ';
+        color: black !important;
+    }
+
+    .job-achievements li strong {
+        color: black !important;
+    }
+
+    /* Skills */
+    .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .skill-category {
+        background: white !important;
+        padding: 0.5rem;
+        border: 1px solid #ccc !important;
+        page-break-inside: avoid;
+    }
+
+    .skill-category-title {
+        font-size: 11pt;
+        color: black !important;
+        margin-bottom: 0.5rem;
+    }
+
+    .skill-list li {
+        padding: 0.125rem 0;
+        padding-left: 0.75rem;
+        color: black !important;
+        font-size: 10pt;
+    }
+
+    .skill-list li::before {
+        content: '• ';
+        color: black !important;
+    }
+
+    /* Education */
+    .education-item {
+        background: white !important;
+        padding: 0.5rem;
+        border: 1px solid #ccc !important;
+        page-break-inside: avoid;
+    }
+
+    .degree {
+        font-size: 12pt;
+        color: black !important;
+    }
+
+    .school {
+        font-size: 11pt;
+        color: black !important;
+    }
+
+    .education-year {
+        font-size: 10pt;
+        color: #333 !important;
+    }
+
+    /* Footer */
+    .footer {
+        display: none;
+    }
+
+    /* Links */
+    a {
+        color: black !important;
+        text-decoration: none;
+    }
+
+    a[href^="http"]:after {
+        content: " (" attr(href) ")";
+        font-size: 9pt;
+        color: #666 !important;
+    }
+
+    a[href^="mailto:"]:after,
+    a[href^="tel:"]:after {
+        content: "";
+    }
+
+    /* Page Breaks */
+    h2, h3 {
+        page-break-after: avoid;
+    }
+
+    .job,
+    .skill-category,
+    .education-item {
+        page-break-inside: avoid;
+    }
+}
